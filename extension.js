@@ -24,16 +24,15 @@ function activate(context) {
                 return; // Claude Code already open, nothing to do
             }
 
-            // Close all editors
-            await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+            // GUARD 2: Preserve all tabs (removed closeAllEditors)
 
-            // Open Claude Code in terminal first
+            // Open Claude Code in terminal
             await vscode.commands.executeCommand('claude-vscode.terminal.open');
 
-            // Wait a moment for Claude Code to open, then close the editor group
+            // Wait for Claude Code to open
             await new Promise(resolve => setTimeout(resolve, 200));
 
-            // Close the active editor group (this should remove the empty pane)
+            // Close only the side-effect editor group
             await vscode.commands.executeCommand('workbench.action.closeGroup');
         } catch (error) {
             // Silently fail - don't interrupt the user's workflow

@@ -15,6 +15,15 @@ function activate(context) {
     // Open Claude Code after a short delay
     setTimeout(async () => {
         try {
+            // GUARD 1: Check if Claude Code terminal already exists
+            const existingClaudeTerminal = vscode.window.terminals.find(
+                terminal => terminal.name.toLowerCase().includes('claude')
+            );
+
+            if (existingClaudeTerminal) {
+                return; // Claude Code already open, nothing to do
+            }
+
             // Close all editors
             await vscode.commands.executeCommand('workbench.action.closeAllEditors');
 

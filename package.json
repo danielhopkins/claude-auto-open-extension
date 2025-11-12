@@ -2,7 +2,7 @@
   "name": "claude-auto-open",
   "displayName": "Claude Auto Open",
   "description": "Automatically opens Claude Code in a terminal when a workspace is opened",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Dan Hopkins",
   "license": "MIT",
   "repository": {

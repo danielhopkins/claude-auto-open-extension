@@ -25,7 +25,11 @@ Or search for "Claude Auto Open" in VS Code settings (Cmd+,)
 
 ## How it works
 
-The extension listens for the `onStartupFinished` event and automatically runs the `claudeCode.openInTerminal` command after a 1-second delay to ensure the workspace is fully loaded.
+The extension listens for the `onStartupFinished` event and automatically opens Claude Code in a terminal after a 500ms delay to ensure the workspace is fully loaded.
+
+The extension includes two guards:
+- **Duplicate Prevention**: Checks if a Claude Code terminal is already open before creating a new one
+- **Tab Preservation**: Keeps all your open tabs (both auto-restored and manually opened) when activating
 
 ## Troubleshooting
 
